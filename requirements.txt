@@ -1,21 +1,19 @@
-# DARTS Unified Forecasting - Professional Time Series Analysis
-# Core requirements (basic analysis without DARTS)
+# DARTS Unified Forecasting - REQUIRED LIBRARIES
+# This project specifically demonstrates DARTS unified API capabilities
+
+# Core DARTS library - REQUIRED
+darts[all]>=0.28.0
+
+# Supporting libraries
 pandas>=2.2.0
 numpy>=1.26.0
-matplotlib>=3.5.0
-seaborn>=0.11.0
 plotly>=5.24.0
 yfinance>=0.2.32
+pytorch-lightning>=2.3.0
+tensorflow>=2.16.1
+optuna>=3.6.1
 scikit-learn>=1.5.0
 scipy>=1.14.0
-optuna>=3.6.0
-requests>=2.31.0
-tqdm>=4.66.0
 
-# Optional DARTS requirements (install manually if needed)
-# For full DARTS functionality, install:
-# pip install darts[all]
-#
-# darts>=0.28.0
-# pytorch-lightning>=2.0.0
-# tensorflow>=2.16.0
+# Note: This project requires DARTS to function properly.
+# Without DARTS, the unified forecasting analysis cannot proceed.

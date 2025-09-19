@@ -30,8 +30,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 
-# DARTS imports
-DARTS_AVAILABLE = False
+# DARTS imports - REQUIRED for this analysis
 try:
     from darts import TimeSeries
     from darts.models import (
@@ -51,13 +50,14 @@ try:
     from darts.dataprocessing.transformers import Scaler, MissingValuesFiller
     from darts.utils.timeseries_generation import datetime_attribute_timeseries
     import darts
-    DARTS_AVAILABLE = True
 except ImportError as e:
-    print(f"Warning: DARTS not installed: {e}")
-    print("Install with: pip install darts[all]")
-    # Create dummy classes
-    class TimeSeries:
-        pass
+    print("❌ CRITICAL ERROR: DARTS library not installed!")
+    print(f"Missing: {e}")
+    print("\n🔧 INSTALLATION REQUIRED:")
+    print("pip install darts[all]")
+    print("\n📖 This project specifically demonstrates DARTS unified forecasting capabilities.")
+    print("Without DARTS, the analysis cannot proceed.")
+    exit(1)
 
 warnings.filterwarnings('ignore')
 
