@@ -25,10 +25,18 @@ Comprehensive time series forecasting analysis using DARTS framework. This proje
 
 ## 🛠️ Installation & Usage
 
-### Prerequisites
+### ⚠️ Required Libraries
+**This project specifically requires DARTS to function properly:**
+
 ```bash
+# Core DARTS library - REQUIRED
+pip install darts[all]
+
+# Or install all requirements
 pip install -r requirements.txt
 ```
+
+**Note:** Without DARTS, the unified forecasting analysis cannot proceed. The project will exit with clear installation instructions if dependencies are missing.
 
 ### Run Analysis
 ```bash
