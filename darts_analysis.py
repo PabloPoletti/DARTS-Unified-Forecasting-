@@ -31,6 +31,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 # DARTS imports
+DARTS_AVAILABLE = False
 try:
     from darts import TimeSeries
     from darts.models import (
@@ -50,9 +51,13 @@ try:
     from darts.dataprocessing.transformers import Scaler, MissingValuesFiller
     from darts.utils.timeseries_generation import datetime_attribute_timeseries
     import darts
+    DARTS_AVAILABLE = True
 except ImportError as e:
     print(f"Warning: DARTS not installed: {e}")
     print("Install with: pip install darts[all]")
+    # Create dummy classes
+    class TimeSeries:
+        pass
 
 warnings.filterwarnings('ignore')
 
@@ -73,9 +78,12 @@ class DARTSAnalysis:
         self.best_params = {}
         self.scalers = {}
         
-    def load_multiple_datasets(self) -> Dict[str, TimeSeries]:
+    def load_multiple_datasets(self) -> Dict[str, Union[TimeSeries, pd.DataFrame]]:
         """Load multiple datasets for comprehensive analysis"""
         print("📊 Loading multiple datasets...")
+        
+        if not DARTS_AVAILABLE:
+            print("⚠️ DARTS not available. Loading datasets as pandas DataFrames.")
         
         datasets = {}
         
